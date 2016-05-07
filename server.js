@@ -72,3 +72,11 @@ app.post('/todos.json', function(req, res) {
   var user = users.find((user) => { return newTodo.get('userId') === user.get('id'); });
   res.json({todo: newTodo.merge({user}).toJS()});
 });
+
+app.put('/todos/:id.json', function(req, res) {
+  var todoId = parseInt(req.params.id, 10);
+  var todo = todos.find((todo) => { return todo.get('id') === todoId; });
+  todo = todo.set('status', req.body.status);
+  todos = todos.set(todoId - 1, todo);
+  res.sendStatus(200);
+});

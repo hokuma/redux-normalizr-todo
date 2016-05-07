@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions';
 import Immutable from 'immutable'
 import _ from 'lodash';
-import Todo from '../../models/todo';
+import Todo, { DONE } from '../../models/todo';
 
 function merge(state, action) {
   const payload = action.payload;
@@ -13,9 +13,17 @@ function merge(state, action) {
   }, state);
 }
 
+function finish(state, action) {
+  const entityId = action.payload.entityId;
+  return state.update(entityId, (todo) => {
+    return todo.set('status', DONE);
+  });
+}
+
 const handlers = {
   FETCH_TODOS: merge,
   CREATE_TODO: merge,
+  FINISH_TODO: finish,
 };
 
 const initialState = Immutable.Map();

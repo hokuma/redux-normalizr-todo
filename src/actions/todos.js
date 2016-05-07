@@ -11,6 +11,7 @@ const schema = {
 
 const fetchTodosAction = createAction('FETCH_TODOS', (result, entities) => { return {result, entities}; });
 const createTodoAction = createAction('CREATE_TODO', (result, entities) => { return {result, entities}; });
+const finishTodoAction = createAction('FINISH_TODO', (entityId) => { return {entityId}; });
 
 export function fetchTodos(getState) {
   return (dispatch, getState) => {
@@ -37,6 +38,21 @@ export function createTodo(body, ownerEntityId) {
     }).then((json) => {
       const { result, entities } = normalize(json, {todo: TodoSchema});
       return dispatch(createTodoAction(result, entities));
+    })
+  };
+}
+
+export function finishTodo(entityId) {
+  return (dispatch, getState) => {
+    const todo = getState().entities.todos.get(entityId);
+    fetch(`/todos/${todo.get('id')}.json`, {
+      method: 'PUT',
+      headers: {
+        'Content-TYpe': 'application/json'
+      },
+      body: JSON.stringify({status: 2})
+    }).then((res) => {
+      return dispatch(finishTodoAction(entityId));
     })
   };
 }
