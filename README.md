@@ -69,17 +69,17 @@ Convert `/todos.json` to the flat structure which consists of `result` and `enti
 }
 ```
 
-Entity represents a data itself, like a database record.
+Entities represent data itself, like a database record.
 
-Result represents api result, but it has entity id only.
+Result represents api result, but it has the entity id only.
 
 # Reducer
 ## entities
-Reduceres for entities does insert, update, delete entities.
+Reduceres for entities insert, update, delete entities.
 
 ## result
-reducers not for entities are result reducers. In most cases, it updates entities list such as append(prepend), sort, remove. 
+Reducers not for entities are result reducers. In most cases, it updates entities list, for example, appends(prepends) a new entity, remove a deleted entity id. 
 
 # Container(Smart Component)
-Container receives results as props and take entities from entities state.
+Container receives a entity id or a entity id list as props and get entities by `conenct` provided by `redux-connect`(https://github.com/reactjs/react-redux).
 
