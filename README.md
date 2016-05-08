@@ -1,5 +1,5 @@
-# redux-template
-Redux project template using normalizr.
+# redux-normalizr-todo
+Redux todoapp using normalizr.
 
 # Usage
 ```
