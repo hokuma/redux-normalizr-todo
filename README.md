@@ -44,7 +44,7 @@ npm start
 `/todos.json` has a nested object which represents a assigned user itself.
 
 # normalizr
-Convert `/todos.json` to a flat structure including `result` and `entities`.
+Convert `/todos.json` to the flat structure which consists of `result` and `entities`.
 
 ```
 {
