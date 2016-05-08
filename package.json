@@ -1,11 +1,11 @@
 {
-  "name": "redux-template",
+  "name": "redux-normalizr-todo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hokuma/redux-template"
+    "url": "https://github.com/hokuma/redux-normalizr-todo"
   },
   "scripts": {
     "start": "node server.js"
